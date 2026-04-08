@@ -1,105 +1,112 @@
-# Homework: Functions and Conditions
+# Homework
 
-## Task 1: Droid Order with Credits
-
-Declare a function `makeTransaction(quantity, pricePerDroid, customerCredits)` that:
-
-* Calculates total price
-* Checks if customer has enough credits
-
-### Returns:
-
-* "Insufficient funds!" if not enough money
-* Otherwise:
-
-```
-"You ordered <quantity> droids worth <totalPrice> credits!"
-```
-
-### Example:
-
-```javascript
-console.log(makeTransaction(5, 3000, 23000)); // "You ordered 5 droids worth 15000 credits!"
-console.log(makeTransaction(3, 1000, 15000)); // "You ordered 3 droids worth 3000 credits!"
-console.log(makeTransaction(10, 5000, 8000)); // "Insufficient funds!"
-console.log(makeTransaction(8, 2000, 10000)); // "Insufficient funds!"
-console.log(makeTransaction(10, 500, 5000)); // "You ordered 10 droids worth 5000 credits!"
-```
+## Topic 4. Arrays
 
 ---
 
-## Task 2: Message Formatting
+## Task 1. Slug Generator
 
-Declare a function `formatMessage(message, maxLength)` that:
+Complete this task in the file `task-1.js`
 
-* Returns original string if length <= maxLength
-* Otherwise trims string and adds `...`
+Before solving the task, let’s define a new term!
+The term slug is a human-readable unique identifier used in web development to create readable URLs.
+For example, instead of seeing `mysite.com/posts/1q8fh74tx`, you can create a slug from the article title. As a result, the URL becomes more user-friendly: `mysite.com/posts/arrays-for-begginers`.
 
-### Example:
+A slug is always a lowercase string where words are separated by hyphens.
+Got it? Now let’s finally solve the task!
+
+Write a function `slugify(title)` that takes an article title as a parameter `title` and returns a slug created from that string.
+The value of `title` will be a string where words are separated only by spaces.
+All characters in the slug must be lowercase.
+All words in the slug must be separated by hyphens.
+
+Take the code below and insert it after your function declaration to verify correctness. The results will be printed in the console.
 
 ```javascript
-console.log(formatMessage("Curabitur ligula sapien", 16)); // "Curabitur ligula..."
-console.log(formatMessage("Curabitur ligula sapien", 23)); // "Curabitur ligula sapien"
-console.log(formatMessage("Vestibulum facilisis purus nec", 20)); // "Vestibulum facilisis..."
-console.log(formatMessage("Vestibulum facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
+console.log(slugify("Arrays for begginers")); // "arrays-for-begginers"
+console.log(slugify("English for developer")); // "english-for-developer"
+console.log(slugify("Ten secrets of JavaScript")); // "ten-secrets-of-javascript"
+console.log(slugify("How to become a JUNIOR developer in TWO WEEKS")); // "how-to-become-a-junior-developer-in-two-weeks"
 ```
+
+Leave this code for mentor review.
+
+### What the mentor will check:
+
+* The function `slugify(title)` is declared
+* Calling `slugify("Arrays for begginers")` returns "arrays-for-begginers"
+* Calling `slugify("English for developer")` returns "english-for-developer"
+* Calling `slugify("Ten secrets of JavaScript")` returns "ten-secrets-of-javascript"
+* Calling `slugify("How to become a JUNIOR developer in TWO WEEKS")` returns "how-to-become-a-junior-developer-in-two-weeks"
 
 ---
 
-## Task 3: Spam Check
+## Task 2. Array Composition
 
-Declare a function `checkForSpam(message)` that:
+Complete this task in the file `task-2.js`
 
-* Returns `true` if message contains "spam" or "sale" (case-insensitive)
-* Otherwise returns `false`
+Write a function called `makeArray` that takes three parameters: `firstArray` (array), `secondArray` (array), and `maxLength` (number). The function should create a new array containing all elements from `firstArray`, followed by all elements from `secondArray`.
 
-### Example:
+If the number of elements in the new array exceeds `maxLength`, the function should return a copy of the array with a length of `maxLength` elements.
+Otherwise, it should return the entire new array.
+
+Take the code below and insert it after your function declaration to verify correctness. The results will be printed in the console.
 
 ```javascript
-console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("Get best sale offers now!")); // true
-console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-console.log(checkForSpam("Trust me, this is not a spam message")); // true
+console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
+console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"]
+console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
 ```
+
+Leave this code for mentor review.
+
+### What the mentor will check:
+
+* The function `makeArray(firstArray, secondArray, maxLength)` is declared
+* Calling `makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)` returns ["Mango", "Poly", "Ajax"]
+* Calling `makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)` returns ["Mango", "Poly", "Houston", "Ajax"]
+* Calling `makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)` returns ["Mango", "Ajax", "Chelsea"]
+* Calling `makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)` returns ["Earth", "Jupiter"]
+* Calling `makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)` returns ["Earth", "Jupiter", "Neptune", "Uranus"]
+* Calling `makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)` returns []
+* Calling `makeArray()` with random arrays and a random number returns the correct array
 
 ---
 
-## Task 4: Shipping Cost
+## Task 3. Filtering an Array of Numbers
 
-Declare a function `getShippingCost(country)` using `switch`.
+Complete this task in the file `task-3.js`
 
-### Shipping prices:
+Write a function `filterArray(numbers, value)` that takes an array of numbers (`numbers`) and a value (`value`) as parameters. The function should return a new array containing only the numbers from `numbers` that are greater than `value`.
 
-* China — 100 credits
-* Chile — 250 credits
-* Australia — 170 credits
-* Jamaica — 120 credits
+Inside the function:
 
-### Returns:
+* Create an empty array to store matching numbers.
+* Use a loop to iterate through each element of the `numbers` array.
+* Use an `if` statement inside the loop to check each element and add it to your array.
+* Return the new array with the matching numbers.
 
-```
-"Shipping to <country> will cost <price> credits"
-```
-
-Or:
-
-```
-"Sorry, there is no delivery to your country"
-```
-
-### Example:
+Take the code below and insert it after your function declaration to verify correctness. The results will be printed in the console.
 
 ```javascript
-console.log(getShippingCost("Australia")); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingCost("Germany")); // "Sorry, there is no delivery to your country"
-console.log(getShippingCost("China")); // "Shipping to China will cost 100 credits"
+console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
+console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
+console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
+console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
 ```
 
----
+Leave this code for mentor review.
 
-## Notes
+### What the mentor will check:
 
-* Use `if...else` for conditions
-* Use `switch` where required
-* Use `.toLowerCase()` for case-insensitive checks
-* Keep test `console.log` for mentor review
+* The function `filterArray(numbers, value)` is declared
+* Calling `filterArray([1, 2, 3, 4, 5], 3)` returns [4, 5]
+* Calling `filterArray([1, 2, 3, 4, 5], 4)` returns [5]
+* Calling `filterArray([1, 2, 3, 4, 5], 5)` returns []
+* Calling `filterArray([12, 24, 8, 41, 76], 38)` returns [41, 76]
+* Calling `filterArray([12, 24, 8, 41, 76], 20)` returns [24, 41, 76]
+* Calling `filterArray()` with random data returns the correct array
